@@ -1,21 +1,17 @@
 import express, { json } from "express";
-var cors = require('cors')
 const app = express();
+import cors from "cors";
 const port = process.env.Port || 3000;
-const postRouter = require('./routes/postEntry');
-const getRouter = require('./routes/getEntries');
+import { postRouter } from "./routes/postEntry";
+import { getRouter } from "./routes/getEntries";
 app.use(express.json());
-app.use('/postEntry', postRouter);
-app.use('/getEntries', getRouter);
-app.use(cors())
+app.use("/entry", postRouter);
+app.use("/entries", getRouter);
+app.use(cors());
 
-app.post('/postEntry', (req, res, next) => {
-  next(); 
+app.post("/entry", (req, res, next) => {});
+app.get("/entries", (req, res, next) => {});
+app.listen(port, () => {
+  console.log(`the app listens to localhost:${port}`);
 });
-app.get('/getEntries', (req, res, next) => {
-    next();
-})
-
-app.listen(port, ()=>{
-   console.log(`the app listens to localhost:${port}`) 
-})
+ 

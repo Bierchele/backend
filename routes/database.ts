@@ -1,3 +1,7 @@
-import scanner from '../barcodeDevice'
-const database = scanner.memo;
-export default database; 
+import { scanner } from "../barcodeDevice";
+interface Barcode {
+  barcode: string;
+}
+
+const database: Array<Barcode> = scanner.memo;
+export { database };
