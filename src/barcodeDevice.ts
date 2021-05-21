@@ -3,11 +3,11 @@ interface Barcode {
 }
 
 class BarcodeScanner {
-  memo: Array<Barcode> = [];
-  postEntry = (barcode: string): void => {
+  private memo: Array<Barcode> = [];
+  public postEntry = (barcode: string): void => {
     this.memo.push({ barcode: barcode });
   };
-  getEntries = (): Barcode[] => {
+  public getEntries = (): Barcode[] => {
     return this.memo;
   };
 }
