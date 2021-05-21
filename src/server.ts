@@ -1,7 +1,7 @@
 import express, { json } from "express";
 const app = express();
 import cors from "cors";
-const port = process.env.Port || 3000;
+const port = process.env.Port || 8080;
 import { postRouter } from "./routes/postEntry";
 import { getRouter } from "./routes/getEntries";
 app.use(express.json());
