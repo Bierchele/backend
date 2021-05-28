@@ -9,7 +9,10 @@ app.use("/entry", postRouter);
 app.use("/entries", getRouter);
 app.use(cors());
 
-app.post("/entry", (req, res, next) => {});
+app.post("/entry", (req, res, next) => {
+  
+});
+
 app.get("/entries", (req, res, next) => {});
 app.listen(port, () => {
   console.log(`the app listens to localhost:${port}`);

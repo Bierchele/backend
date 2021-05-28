@@ -1,16 +1,19 @@
 import express from "express";
-import {scanner} from '../barcodeDevice';
-const postRouter = express.Router();
+import { build } from "../mongoUtilities/mongoUtilities";
 import cors from "cors";
-postRouter.use(cors())
+const postRouter = express.Router();
+postRouter.use(cors());
 
-postRouter.post('/',(req, res, next) => {
-    if(!req.body){
-        res.status(400).send("Sie haben eine Bambusleitung")
-    }
-    res.send(req.body)
-    scanner.postEntry(req.body.barcode);
-    next();
-})
+postRouter.post("/", async (req, res, next) => {
+  if (req.body === undefined) {
+    res.send("Sie haben eine Bambusleitung");
+  } else {
+    const data = build( req.body);
+    console.log(data)
+    await data.save();
+    return res.status(201).send(data);
+  }
+  next();
+});
 
-export {postRouter};
+export { postRouter };
